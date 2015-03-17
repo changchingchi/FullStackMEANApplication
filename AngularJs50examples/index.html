@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="nameApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Angularjs50examps</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js">
+   </script>
+	<script src="App.js"></script>
+</head>
+<body>
+	<div ng-controller="MainCtrl">
+		{{firstname}} {{lastname}}
+	</div>
+	<div ng-controller="MainCtrl">
+		<ul>
+			<li ng-repeat="name in namearray">{{name}}
+				<a href="" ng-click="removeName(name)">remove</a>
+			</li>
+		</ul>
+		<form ng-submit="addName()">
+			<input type="text" ng-model="enterName">
+			<button type="submit">Addname Push</button>
+		</form>
+	</div>
+
+	<!-- <table ng-controller="CountryCtrl">
+		<input type = "text" ng-model = "query" placeholder="search..">
+		<tr>
+			<th><a href="" ng-click="sortType = 'City'">City</a></th>
+			<th><a href="" ng-click="sortType = 'Country'">Country</a></th>
+			<th><a href="" ng-click="sortType = 'Name'">Flag</a></th>
+		</tr>
+		<tr ng-repeat="object in JSONresponse | filter : query | orderBy:sortType"  >
+			<td>{{object.Name}}</td>
+			<td>{{object.City}}</td>
+			<td><img ng-src="{{object.Flag}}" width="100"></img></td>
+		</tr>
+			
+	</table> -->
+
+	<div ng-view></div>
+</body>
+</html>
