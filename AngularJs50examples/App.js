@@ -67,3 +67,24 @@ angular.module('nameApp',['ngRoute'])
           console.log(country);
         });
       })
+
+.controller('ContactListCtrl',function($scope){
+  person1 = {
+        name: 'tim1',
+        email: 'tim1@paypal.com',
+        number: '1111111111'
+  };
+  person2 = {
+        name: 'tim2',
+        email: 'tim2@paypal.com',
+        number: '2222222222'
+  };
+  person3 = {
+        name: 'tim3',
+        email: 'tim3@paypal.com',
+        number: '3333333333'
+  };
+
+  var contactlist = [person1,person2,person3];
+  $scope.contactlist = contactlist;
+})
