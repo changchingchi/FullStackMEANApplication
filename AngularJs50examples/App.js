@@ -68,23 +68,18 @@ angular.module('nameApp',['ngRoute'])
         });
       })
 
-.controller('ContactListCtrl',function($scope){
-  person1 = {
-        name: 'tim1',
-        email: 'tim1@paypal.com',
-        number: '1111111111'
-  };
-  person2 = {
-        name: 'tim2',
-        email: 'tim2@paypal.com',
-        number: '2222222222'
-  };
-  person3 = {
-        name: 'tim3',
-        email: 'tim3@paypal.com',
-        number: '3333333333'
-  };
+.controller('ContactListCtrl',function($scope, $http){
 
-  var contactlist = [person1,person2,person3];
-  $scope.contactlist = contactlist;
+  $http({
+      method: 'GET',
+      cache : true,
+      url: '/contactlist'
+  }).success(function(response){
+    console.log('Client Received Respose from Server');
+    $scope.contactlist = response;
+  });
+
+  //Data binding and allow contactlist to be use in View. 
+
+
 })

@@ -20,11 +20,20 @@
 		 <h1>ContactListExample</h1>
 		 <input type="text" ng-model='text'>
 			<table class="table">
-				<tr>
-					<th>Name</th>
-					<th>Email</th>
-					<th>Number</th>
-				</tr>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Number</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="contact in contactlist">
+						<th>{{contact.name}}</th>
+						<th>{{contact.email}}</th>
+						<th>{{contact.number}}</th>
+					</tr>
+				</tbody>
 			</table>
 	</div>
 
