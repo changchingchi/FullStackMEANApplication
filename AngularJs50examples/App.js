@@ -70,16 +70,34 @@ angular.module('nameApp',['ngRoute'])
 
 .controller('ContactListCtrl',function($scope, $http){
 
-  $http({
-      method: 'GET',
-      cache : true,
-      url: '/contactlist'
-  }).success(function(response){
-    console.log('Client Received Respose from Server');
-    $scope.contactlist = response;
-  });
+  // var refresh = function(){
+  //         $http({
+  //             method: 'GET',
+  //             // cache : true,
+  //             url: '/contactlist'
+  //         }).success(function(response){
+  //           console.log('Client Received Respose from Server');
+  //           $scope.contactlist = response;
+  //           console.log(response);
+
+  //     });
+  //   };
+
+  var refresh = function(){
+    $http.get('/contactlist').success(function(response){
+      console.log('client received response from server');
+      $scope.contactlist = response;
+    });
+  }
+
+refresh();
 
   //Data binding and allow contactlist to be use in View. 
-
+    $scope.addContact = function(){
+      console.log($scope.contact);
+     $http.post('/contactlist',$scope.contact).success(function(response){
+      refresh();
+     });
+    };
 
 })
