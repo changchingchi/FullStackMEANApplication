@@ -1,7 +1,10 @@
 
 var express = require('express');
 var app = express();
-
+var mongojs = require('mongojs'); 
+//declaim which module to use. : mongojs
+var db = mongojs('contactlist', ['contactlist']);
+//declaim which mongodb DB to use and collection to use.
 
 app.use(express.static(__dirname+ "/angularJs50Examples"));
 
