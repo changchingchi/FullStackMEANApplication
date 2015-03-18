@@ -87,6 +87,7 @@ angular.module('nameApp',['ngRoute'])
     $http.get('/contactlist').success(function(response){
       console.log('client received response from server');
       $scope.contactlist = response;
+
     });
   }
 
@@ -96,8 +97,14 @@ refresh();
     $scope.addContact = function(){
       console.log($scope.contact);
      $http.post('/contactlist',$scope.contact).success(function(response){
+      $scope.contact="";
       refresh();
+
      });
     };
+
+    $scope.removeContact = function(){
+      
+    }
 
 })
