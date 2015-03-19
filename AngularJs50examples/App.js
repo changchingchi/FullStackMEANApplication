@@ -103,8 +103,10 @@ refresh();
      });
     };
 
-    $scope.removeContact = function(){
-      
-    }
+    $scope.removeContact = function(id){
+      console.log("id: "+ id);
+      $http.delete('/contactlist/' + id);
+      refresh();
+    };
 
 })

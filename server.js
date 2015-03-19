@@ -25,6 +25,15 @@ app.post('/contactlist', function(req, res){
 		res.json(doc);
 	})
 });
+app.delete('/contactlist/:id', function(req, res){
+	var id = req.params.id;
+	 console.log('id :'+id+' is ready for removal');
+	db.contactlist.remove({_id:mongojs.ObjectId(id)}, function(err,doc){
+		//doc meaning the data we parsed and received.
+		res.json(doc);
+	})
+});
+
 
 app.listen(3001);
 console.log("server running on 3001");
