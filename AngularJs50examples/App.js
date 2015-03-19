@@ -70,19 +70,6 @@ angular.module('nameApp',['ngRoute'])
 
 .controller('ContactListCtrl',function($scope, $http){
 
-  // var refresh = function(){
-  //         $http({
-  //             method: 'GET',
-  //             // cache : true,
-  //             url: '/contactlist'
-  //         }).success(function(response){
-  //           console.log('Client Received Respose from Server');
-  //           $scope.contactlist = response;
-  //           console.log(response);
-
-  //     });
-  //   };
-
   var refresh = function(){
     $http.get('/contactlist').success(function(response){
       console.log('client received response from server');
@@ -108,5 +95,24 @@ refresh();
       $http.delete('/contactlist/' + id);
       refresh();
     };
+
+    $scope.editContact = function(id){
+      console.log("edit id: "+ id);
+      $http.get('/contactlist/' +id).success(function(response){
+        console.log(response);
+        $scope.contact = response;
+      })
+    };
+    $scope.updateContact = function(){
+      console.log("udpate id: "+ $scope.contact._id);  
+      $http.put('/contactlist/'+$scope.contact._id, $scope.contact).success(function(){
+        refresh();
+      })
+      
+    }
+
+    $scope.deselect = function(){
+      $scope.contact = "";
+    }
 
 })
